@@ -9,7 +9,8 @@
 ## Usage
 
 ```console
-$ git clone 
+$ git clone https://github.com/gongahkia/naobito
+$ cd naobito
 $ python3 -m venv myenv
 $ pip install opencv-python numpy
 ```
