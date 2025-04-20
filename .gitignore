@@ -1,8 +1,8 @@
 myenv
-*.png
-*.jpg
-*.jpeg
-*.webp
+wallpapers/*.png
+wallpapers/*.jpg
+wallpapers/*.jpeg
+wallpapers/*.web
 node_modules
 .pnp
 .pnp.js
