@@ -11,21 +11,25 @@
 ```console
 $ git clone https://github.com/gongahkia/naobito
 $ cd naobito
+$ sudo apt install graphviz
 $ python3 -m venv myenv
-$ pip install opencv-python numpy flask flask-cors opencv-python numpy
+$ pip install opencv-python numpy flask flask-cors opencv-python numpy diagrams
+$ cd naobito-app
 $ npm install axios
+$ cd ..
+$ python3 main.py
 ```
+
+Then access the frontend at [localhost:3000](http://localhost:3000) and backend at [localhost:5000](http://localhost:5000).
 
 ## Stack
 
-* *Frontend*: ...
-* *Backend*: Python, Flask server
+* *Frontend*: React, TypeScript
+* *Backend*: Flask, Python
 
 ## Architecture
 
-```mermaid
-...
-```
+![](./asset/reference/architecture.png)
 
 ## References
 

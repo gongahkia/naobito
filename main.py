@@ -22,7 +22,7 @@ def run_flask():
     subprocess.run(flask_command, env=flask_env)
 
 def run_react():
-    react_dir = os.path.join(os.getcwd(), 'naobito-frontend')
+    react_dir = os.path.join(os.getcwd(), 'naobito-app')
     os.chdir(react_dir)
     if os.name == 'nt':
         subprocess.run(['npm.cmd', 'start'], shell=True)
