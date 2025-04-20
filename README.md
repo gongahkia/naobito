@@ -6,23 +6,11 @@ A simple Web App that creates Wallpapers from your [Manga](https://en.wikipedia.
 
 Cooked up in [2.5 hours](https://github.com/gongahkia/naobito/commit/644a797b3db546288a5e88077592a0de0819edf4) to take a break from [finals studying](./asset/reference/finals.jpg).
 
-<table>
-  <tr>
-    <td align="center" valign="top">
-      <img src="./asset/reference/example.jpg" alt="Full Manga Panel" width="350">
-    </td>
-    <td align="center" valign="middle" style="font-size: 48px; padding: 0 20px;">
-      ➡️
-    </td>
-    <td align="left" valign="top">
-      <img src="./asset/reference/panel_1.png" alt="Panel 1" width="100"><br>
-      <img src="./asset/reference/panel_2.png" alt="Panel 2" width="100"><br>
-      <img src="./asset/reference/panel_3.png" alt="Panel 3" width="100"><br>
-      <img src="./asset/reference/panel_4.png" alt="Panel 4" width="100"><br>
-      <img src="./asset/reference/panel_5.png" alt="Panel 5" width="100">
-    </td>
-  </tr>
-</table>
+<p>
+  <img src="./asset/reference/example.jpg" alt="Full Manga Panel" width="300" style="vertical-align: middle;"/>
+  <span style="font-size:18px; vertical-align: middle; margin: 0 20px;">becomes...</span>
+  <img src="./asset/reference/panel_4.png" alt="Extracted Panel" width="300" style="vertical-align: middle;"/>
+</p>
 
 ## Stack
 
