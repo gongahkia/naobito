@@ -25,7 +25,7 @@ def main():
     image_path = input("Enter manga image path: ")
     original, panels = detect_panels(image_path)
     output_dir = 'wallpapers'
-    MIN_AREA_PERCENTAGE = 0.02  # can tweak this later kek
+    MIN_AREA_PERCENTAGE = 0.02  # can tweak this later kek ~ gong
     img_height, img_width = original.shape[:2]
     total_image_area = img_width * img_height
     min_valid_area = total_image_area * MIN_AREA_PERCENTAGE

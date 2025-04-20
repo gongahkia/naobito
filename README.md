@@ -12,7 +12,8 @@
 $ git clone https://github.com/gongahkia/naobito
 $ cd naobito
 $ python3 -m venv myenv
-$ pip install opencv-python numpy
+$ pip install opencv-python numpy flask flask-cors opencv-python numpy
+$ npm install axios
 ```
 
 ## Stack
