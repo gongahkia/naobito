@@ -1,6 +1,10 @@
+# ----- required imports -----
+
 import cv2
 import numpy as np
 import os
+
+# ----- helper functions -----
 
 def detect_panels(image_path):
     image = cv2.imread(image_path)
@@ -17,41 +21,32 @@ def detect_panels(image_path):
     panels.sort(key=lambda rect: (rect[2]-rect[0])*(rect[3]-rect[1]), reverse=True)
     return image, panels
 
-def resize_for_device(image, device):
-    device_resolutions = {
-        'phone': (1080, 1920),
-        'laptop': (1366, 768),
-        'ipad': (2048, 2732),
-        'desktop': (3840, 2160)
-    }
-    target_w, target_h = device_resolutions[device]
-    h, w = image.shape[:2]
-    scale = min(target_w/w, target_h/h)
-    resized = cv2.resize(image, (int(w*scale), int(h*scale)))
-    delta_w = target_w - resized.shape[1]
-    delta_h = target_h - resized.shape[0]
-    return cv2.copyMakeBorder(resized, 0, delta_h, 0, delta_w, 
-                             cv2.BORDER_CONSTANT, value=(0,0,0))
-
 def main():
     image_path = input("Enter manga image path: ")
     original, panels = detect_panels(image_path)
-    if not os.path.exists('wallpapers'):
-        os.makedirs('wallpapers')
+    output_dir = 'wallpapers'
+    MIN_AREA_PERCENTAGE = 0.02  # can tweak this later kek
+    img_height, img_width = original.shape[:2]
+    total_image_area = img_width * img_height
+    min_valid_area = total_image_area * MIN_AREA_PERCENTAGE
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    saved_count = 0
     for i, (x1, y1, x2, y2) in enumerate(panels):
+        panel_width = x2 - x1
+        panel_height = y2 - y1
+        panel_area = panel_width * panel_height
+        if panel_area < min_valid_area:
+            print(f"Skipping panel {i+1} (too small: {panel_area}px)")
+            continue
         panel = original[y1:y2, x1:x2]
-        cv2.imshow(f'Panel {i+1}', panel)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
-        choice = input(f"Save Panel {i+1}? (y/n): ").lower()
-        if choice == 'y':
-            devices = input("Enter devices (comma separated): ").lower().split(',')
-            for device in devices:
-                device = device.strip()
-                resized = resize_for_device(panel, device)
-                filename = f'wallpapers/panel_{i+1}_{device}.png'
-                cv2.imwrite(filename, resized)
-                print(f"Saved {filename}")
+        filename = os.path.join(output_dir, f'panel_{i+1}.png')
+        cv2.imwrite(filename, panel)
+        print(f"Saved {filename} ({panel_area}px)")
+        saved_count += 1
+    print(f"\nDone! Saved {saved_count} valid panels out of {len(panels)} detected")
+
+# ----- execution code -----
 
 if __name__ == "__main__":
     main()

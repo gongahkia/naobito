@@ -9,7 +9,9 @@
 ## Usage
 
 ```console
-$ ...
+$ git clone 
+$ python3 -m venv myenv
+$ pip install opencv-python numpy
 ```
 
 ## Stack
